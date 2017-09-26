@@ -1,0 +1,13 @@
+﻿<article id="{{ currentRecipe.id }}" class="recipe">
+    <h1>Recipe<span>: {{ currentRecipe.name }}</span></h1>
+    <p>{{ currentRecipe.description }}</p>
+    <aside class="yield">
+        <h4>Yields<span>: {{ currentRecipe.makesQuantity }} {{ currentRecipe.makesUnitAbbr }}</span></h4>
+    </aside>
+    <section class="ingredients">
+        <h4>Ingredients</h4>
+        <ul *ngIf="currentRecipe.recipeIngredientIds.length">
+            <li *ngFor="let ri of currentRecipe.recipeIngredientIds"><recipe-ingredient [id]="ri"></recipe-ingredient></li>
+        </ul>
+    </section>
+</article>

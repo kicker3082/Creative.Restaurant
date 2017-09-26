@@ -1,0 +1,7 @@
+﻿<p *ngIf="!recipeIngredient"><em>Loading...</em></p>
+
+<ul *ngIf="recipeIngredient">
+    <li id="{{ recipeIngredient.id }}">{{ recipeIngredient.ingredientName }}</li>
+    <li>{{ recipeIngredient.quantity }}</li>
+    <li>{{ recipeIngredient.unitAbbr }}</li>
+</ul>

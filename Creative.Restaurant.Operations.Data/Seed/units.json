@@ -1,0 +1,7 @@
+﻿{
+  "id": "1",
+  "abbr": "fl oz",
+  "name": "fluid ounce",
+  "isByWeight": false,
+  "isByVolume":  true
+}

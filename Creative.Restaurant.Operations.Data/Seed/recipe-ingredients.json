@@ -1,0 +1,14 @@
+﻿{
+  "id": "1",
+  "ingredient": {
+    "id": "1",
+    "name": "Water",
+    "unit": {
+      "id": "1",
+      "abbr": "fl oz",
+      "name": "fluid ounce",
+      "isByWeight": false,
+      "isByVolume": true
+    }
+  }
+}

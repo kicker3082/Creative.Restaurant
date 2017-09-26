@@ -1,0 +1,29 @@
+﻿<article id="new-recipe" class="recipe">
+    <form>
+        <fieldset>
+            <h1><label>Recipe:</label></h1>
+            <span><input name="name" type="text" /></span>
+            <label>Description</label>
+            <span><input name="description" type="text" /></span>
+            <label>Makes Quantity</label>
+            <span><input name="makesQty" type="text" /></span>
+            <label>Makes Unit</label>
+            <span><input name="makesUnit" type="text" /></span>
+            <h4><label>Ingredients:</label></h4>
+        </fieldset>
+    </form>
+</article>
+
+<article id="{{ currentRecipe.id }}" class="recipe">
+    <h1>Recipe<span>: {{ currentRecipe.name }}</span></h1>
+    <p>{{ currentRecipe.description }}</p>
+    <aside class="yield">
+        <h4>Yields<span>: {{ currentRecipe.makesQuantity }} {{ currentRecipe.makesUnitAbbr }}</span></h4>
+    </aside>
+    <section class="ingredients">
+        <h4>Ingredients</h4>
+        <ul *ngIf="currentRecipe.recipeIngredientIds.length">
+            <li *ngFor="let ri of currentRecipe.recipeIngredientIds"><recipe-ingredient [id]="ri"></recipe-ingredient></li>
+        </ul>
+    </section>
+</article>
