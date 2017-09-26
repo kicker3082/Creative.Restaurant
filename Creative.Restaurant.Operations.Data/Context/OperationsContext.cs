@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Restaurant.Operations.Data.Models;
+﻿using Creative.Restaurant.Operations.Data.Models;
+using Microsoft.EntityFrameworkCore;
 
-namespace Restaurant.Operations.Data.Context
+namespace Creative.Restaurant.Operations.Data.Context
 {
     public class OperationsContext : DbContext
     {

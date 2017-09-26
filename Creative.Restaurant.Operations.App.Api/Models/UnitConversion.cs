@@ -1,4 +1,4 @@
-﻿namespace Restaurant.Operations.App.Api.Models
+﻿namespace Creative.Restaurant.Operations.App.Api.Models
 {
     public class UnitConversion
     {

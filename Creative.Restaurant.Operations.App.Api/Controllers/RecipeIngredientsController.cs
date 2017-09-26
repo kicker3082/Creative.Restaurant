@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Creative.Restaurant.Operations.App.Api.Models;
+using Creative.Restaurant.Operations.Data.Context;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Restaurant.Operations.App.Api.Models;
-using Restaurant.Operations.Data.Context;
 
-namespace Restaurant.Operations.App.Api.Controllers
+namespace Creative.Restaurant.Operations.App.Api.Controllers
 {
     [Route("api/[controller]")]
     public class RecipeIngredientsController : Controller

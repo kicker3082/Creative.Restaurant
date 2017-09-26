@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\Shared\" />
     <Folder Include="wwwroot\css\" />
     <Folder Include="wwwroot\images\" />
@@ -25,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Restaurant.Operations.Data\Restaurant.Operations.Data.csproj" />
+    <ProjectReference Include="..\Creative.Restaurant.Operations.Data\Creative.Restaurant.Operations.Data.csproj" />
   </ItemGroup>
 
 </Project>

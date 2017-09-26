@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Restaurant.Operations.Data.Models
+namespace Creative.Restaurant.Operations.Data.Models
 {
     public class Recipe
     {

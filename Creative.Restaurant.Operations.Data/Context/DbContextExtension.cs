@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
+using Creative.Restaurant.Operations.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Restaurant.Operations.Data.Models;
 
-namespace Restaurant.Operations.Data.Context
+namespace Creative.Restaurant.Operations.Data.Context
 {
     public static class DbContextExtension
     {
