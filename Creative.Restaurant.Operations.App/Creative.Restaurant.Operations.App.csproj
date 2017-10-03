@@ -26,10 +26,6 @@
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Restaurant.Operations.Data\Restaurant.Operations.Data.csproj" />
-  </ItemGroup>
-
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
     <!-- Ensure Node.js is installed -->
     <Exec Command="node --version" ContinueOnError="true">

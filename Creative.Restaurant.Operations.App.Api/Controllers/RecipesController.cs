@@ -58,14 +58,11 @@ namespace Creative.Restaurant.Operations.App.Api.Controllers
         [HttpGet]
         public async Task<IEnumerable<Recipe>> Get()
         {
-            List<Data.Models.Recipe> recipes = await _db.Recipes
+            var recipes = (List<Data.Models.Recipe>) await _db.Recipes
                 .Include(r => r.MakesUnit)
-                .Include(r => r.Ingredients)
                 .ToListAsync();
 
-            var mappedRecipes = recipes.Select(Map);
-
-            return mappedRecipes;
+            return recipes.Select(Map);
         }
 
         // GET api/recipes/5
@@ -74,7 +71,6 @@ namespace Creative.Restaurant.Operations.App.Api.Controllers
         {
             var recipeData = await _db.Recipes
                 .Include(ri => ri.MakesUnit)
-                .Include(ri => ri.Ingredients)
                 .SingleOrDefaultAsync(m => m.Id == id); // change to Async
 
             return Map(recipeData);
@@ -82,7 +78,24 @@ namespace Creative.Restaurant.Operations.App.Api.Controllers
 
         // POST api/recipes
         [HttpPost]
-        public async Task Post([FromBody]Recipe value)
+        public async Task<Recipe> Post([FromBody]Recipe value)
+        {
+            var recipe = await Map(value);
+
+            await _db.AddAsync(recipe);
+            await _db.SaveChangesAsync();
+
+            // Pick up any changes that happen in the DB (triggers, etc)
+            var dbRecipe = await _db.Recipes
+                .Include(r => r.MakesUnit)
+                .SingleOrDefaultAsync(r => r.Name == recipe.Name);
+
+            return Map(dbRecipe);
+        }
+
+        // PUT api/recipes/5
+        [HttpPut("{id}")]
+        public async Task Put(int id, [FromBody]Recipe value)
         {
             var recipe = await Map(value);
             if (_db.Recipes.Any(r => r.Id == value.Id))
@@ -92,16 +105,14 @@ namespace Creative.Restaurant.Operations.App.Api.Controllers
             await _db.SaveChangesAsync();
         }
 
-        // PUT api/recipes/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]Recipe value)
-        {
-        }
-
         // DELETE api/recipes/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
+            var recipeToRemove = await _db.Recipes.SingleOrDefaultAsync(r => r.Id == id);
+            _db.Recipes.Remove(recipeToRemove);
+
+            await _db.SaveChangesAsync();
         }
     }
 }

@@ -1,40 +1,42 @@
-﻿import { Component, OnInit, Inject } from '@angular/core';
+﻿import { Component, OnInit, Inject, Input, Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { ActivatedRoute } from '@angular/router';
+import { APP_CONFIG, IAppConfig } from "../../app.config";
 
 @Component({
     selector: 'recipe',
     templateUrl: './recipe.component.html',
     styleUrls: ["./recipe.component.css"]
 })
+@Injectable()
 export class RecipeComponent implements OnInit {
     public currentRecipe: IRecipe;
-    public id: number;
+    config: IAppConfig;
     http: Http;
-    baseUrl: string;
     sub: any;
 
-    constructor(http: Http, @Inject('BASE_URL') baseUrl: string, private route: ActivatedRoute) {
+    @Input() recipeId: number;
+
+    constructor(http: Http, @Inject(APP_CONFIG) config: IAppConfig, private route: ActivatedRoute) {
         this.http = http;
-        this.baseUrl = baseUrl;
+        this.config = config;
     }
 
     ngOnInit(): void {
 
         this.sub = this.route.params.subscribe(params => {
-            this.id = +params['id']; // (+) converts string 'id' to a number
-            this.loadRecipe();
+            var id = +params['id']; // (+) converts string 'id' to a number
+            this.loadRecipe(id);
         });
-
     }
 
-    loadRecipe(): void {
+    loadRecipe(id: number): void {
         // this.baseUrl
-        this.http.get('http://localhost:45043/' + 'api/recipes/' + this.id).subscribe(result => {
+        this.http.get(this.config.apiEndpoint + 'recipes/' + id).subscribe(result => {
 
             this.currentRecipe = result.json() as IRecipe;
 
-        }, error => console.error(error));
+        },
+            error => console.error(error));
     }
-
 }

@@ -1,0 +1,39 @@
+﻿<article id="new-recipe-ingredient" class="recipe-ingredient-entry">
+    <h1>
+        <label>
+            Recipe:<span>
+                <input name="name" type="text" required #nameInput
+                       (blur)="setIngredientName(nameInput.value)" />
+            </span>
+        </label>
+    </h1>
+    <ul>
+        <li>
+            <label>
+                Description:
+                <span>
+                    <input name="description" type="text" id="description" #descriptionInput
+                           (blur)="setIngredientDescription(descriptionInput.value)" />
+                </span>
+            </label>
+        </li>
+        <li>
+            <label>Base Unit:</label>
+
+            <span>
+                <h3> {{title}}</h3>
+                <input type="text" [(ngModel)]="queryString" id="search" placeholder="Search to type">
+
+                <ul>
+                    <li *ngFor="let n of names | FilterPipe: queryString">
+                        {{n}}
+                    </li>
+                </ul>
+
+                <input name="baseUnit" type="text" id="baseUnit" #unitInput
+                       (blur)="setBaseUnit(unitInput.value)" />
+            </span>
+        </li>
+    </ul>
+    <button (click)="postIngredient()">Add It</button>
+</article>

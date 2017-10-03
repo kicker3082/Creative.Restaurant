@@ -31,7 +31,7 @@ namespace Creative.Restaurant.Operations.App.Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseCors(b => b.AllowAnyOrigin());
+                app.UseCors(b => b.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             }
 
             app.UseMvc();

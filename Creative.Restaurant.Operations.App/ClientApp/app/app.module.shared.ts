@@ -11,7 +11,8 @@ import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { RecipeComponent } from './components/recipe/recipe.component';
 import { RecipeIngredientComponent } from './components/recipe-ingredient/recipe-ingredient.component';
-import { RecipeInputComponent } from './components/recipe-input/recipe-input.component';
+import { RecipeEntryComponent } from './components/recipe/recipe-entry.component';
+import { RecipeIngredientEntryComponent } from './components/recipe-ingredient/recipe-ingredient-entry.component';
 
 @NgModule({
     declarations: [
@@ -22,7 +23,8 @@ import { RecipeInputComponent } from './components/recipe-input/recipe-input.com
         HomeComponent,
         RecipeComponent,
         RecipeIngredientComponent,
-        RecipeInputComponent
+        RecipeEntryComponent,
+        RecipeIngredientEntryComponent
     ],
     imports: [
         CommonModule,
@@ -35,7 +37,8 @@ import { RecipeInputComponent } from './components/recipe-input/recipe-input.com
             { path: 'fetch-data', component: FetchDataComponent },
             { path: 'recipe/:id', component: RecipeComponent },
             { path: 'recipe-ingredient/:id', component: RecipeIngredientComponent },
-            { path: 'recipe-input', component: RecipeInputComponent },
+            { path: 'recipe-entry', component: RecipeEntryComponent },
+            { path: 'recipe-ingredient-entry', component: RecipeIngredientEntryComponent },
 
             { path: '**', redirectTo: 'home' }
         ])

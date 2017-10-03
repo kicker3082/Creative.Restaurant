@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Restaurant.Operations.App.Controllers
+namespace Creative.Restaurant.Operations.App.Controllers
 {
     public class HomeController : Controller
     {

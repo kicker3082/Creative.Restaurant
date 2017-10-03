@@ -1,15 +1,10 @@
-﻿using System;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Restaurant.Operations.Data.Context;
 
-namespace Restaurant.Operations.App
+namespace Creative.Restaurant.Operations.App
 {
     public class Startup
     {
@@ -25,8 +20,8 @@ namespace Restaurant.Operations.App
         {
             services.AddMvc();
 
-            services.AddDbContext<OperationsContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("OperationsContext")));
+            //services.AddDbContext<OperationsContext>(options =>
+            //        options.UseSqlServer(Configuration.GetConnectionString("OperationsContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
